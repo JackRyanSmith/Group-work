@@ -13,16 +13,12 @@ SO THAT I can find out what the local sports schedules are
 ## Acceptance Criteria
 
 ```
-GIVEN the sports fan/ user wants
+GIVEN that I want to know what major sports teams are playing this weekend, and what their standings are
 
-WHEN ...
-THEN ...
+WHEN I enter a city name
+THEN I'm presented with a list of local leagues and teams (i.e. NBA, MLS, NHL, etc.)
+
+WHEN I select which teams I'm interested in getting more information on
+AND WHEN I select my desired information type (i.e. next game, schedule, standings, etc.)
+THEN I'm presented with that specific information for those teams I'm interested in
 ```
-
-## Features
-
-user is prompted to enter a city of their choice
-the app returns a list of leagues and teams (i.e. NBA, MLS, NHL, etc.)
-the user then selects which teams to get information for
-the user then selects what info to filter for (i.e. next game, schedule, standings, etc.)
-the app uses the full api's information database
