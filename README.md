@@ -16,9 +16,11 @@ SO THAT I can find out what the local sports schedules are
 GIVEN that I want to know what major sports teams are playing this weekend, and what their standings are
 
 WHEN I enter a city name
-THEN I'm presented with a list of local leagues and teams (i.e. NBA, MLS, NHL, etc.)
+THEN I'm presented with a check list of local teams with league information (i.e. NBA, MLS, NHL, etc.) that I can select from
 
-WHEN I select which teams I'm interested in getting more information on
-AND WHEN I select my desired information type (i.e. next game, schedule, standings, etc.)
-THEN I'm presented with that specific information for those teams I'm interested in
+WHEN I select which team(s) I'm interested in getting more information on
+THEN I'm presented with a check list of possible team information filters (i.e. next game, schedule, standings, etc.)
+
+WHEN I select my desired information type(s)
+THEN I'm presented with that specific information for the team(s) I'm interested in
 ```
