@@ -17,9 +17,10 @@ $("#run-search").on("click", function (event) {
 });   
 
 
-//         Second API call
+//         Second API call - no response
 // button that submits call
 $("#run-search").on("click", function (event) {
+    event.preventDefault();
     var settings = {
         "async": true,
         "crossDomain": true,
