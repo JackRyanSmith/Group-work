@@ -1,10 +1,11 @@
-//     First API call - no response
+//     First API call
 // Button that submits call
+
 $("#run-search").on("click", function (event) {
     event.preventDefault();
  
     // API Key: DaMMhwibfDPKxlHn 
-    var queryURL = "http://api.isportsapi.com//sport/football/league/basic?api_key=DaMMhwibfDPKxlHn";
+    var queryURL = "http://api.isportsapi.com/sport/football/livescores?api_key=DaMMhwibfDPKxlHn";
 
     $.ajax({
         url: queryURL,
@@ -13,11 +14,10 @@ $("#run-search").on("click", function (event) {
         .then(function (response) {
             console.log(response);
         });
-    console.log(queryURL);
 });   
 
 
-//         Second API call - no response
+//         Second API call
 // button that submits call
 $("#run-search").on("click", function (event) {
     event.preventDefault();
