@@ -13,24 +13,45 @@
 
         // Danny's api key: DaMMhwibfDPKxlHn
         // Christian's api key: 0uzEF34YYjTbHstM
-        var queryURL = "https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/schedule?api_key=0uzEF34YYjTbHstM&leagueId=111";
 
+        var cityName = prompt("Enter city");
+        var cityQueryURL = "https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/team/search?api_key=0uzEF34YYjTbHstM&name=" + cityName;
+        var teamName;
+
+        var gamesQueryURL = "https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/schedule?api_key=0uzEF34YYjTbHstM&leagueId=111";
+        
+        // call to get teams
         $.ajax({
-        url: queryURL,
+        url: cityQueryURL,
         method: "GET"
         }).then(function(response) {
-        console.log(response);
+
+            for (var i = 0; i < response.data.length; i++) {
+                if (response.data[i].leagueId === "111") {
+                    console.log("Upcoming " + response.data[i].name + " games:");
+                    teamName = response.data[i].name
+                }
+            }
+
+        });
+
+        // call to get upcoming schedule
+        $.ajax({
+        url: gamesQueryURL,
+        method: "GET"
+        }).then(function(response) {
+        // console.log(response);
 
             var game = response.data;
-            
-            console.log("Upcoming " + response.data[1189].awayName + " games:"); // format to query away team name (e.g. Portland Trail Blazers)
+
+            // console.log("Upcoming " + response.data[1189].awayName + " games:");
 
             for (var i = 0; i < game.length; i++) {
-                if ((game[i].awayId == "25" || game[i].homeId == "25") && (new Date(game[i].matchTime*1000) > new Date())) {
+                if ((game[i].awayName == teamName || game[i].homeName == teamName) && (new Date(game[i].matchTime*1000) > new Date())) {
                     console.log(new Date(game[i].matchTime*1000));
                 }
             }
-        
+
         });
 
         </script>
