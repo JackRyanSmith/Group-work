@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>temp</title>
+    </head>
+
+    <body>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+
+        // Danny's api key: DaMMhwibfDPKxlHn
+        // Christian's api key: 0uzEF34YYjTbHstM
+        var queryURL = "https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/schedule?api_key=0uzEF34YYjTbHstM&leagueId=111";
+
+        $.ajax({
+        url: queryURL,
+        method: "GET"
+        }).then(function(response) {
+        console.log(response);
+
+            var game = response.data;
+            
+            console.log("Upcoming " + response.data[1189].awayName + " games:"); // format to query away team name (e.g. Portland Trail Blazers)
+
+            for (var i = 0; i < game.length; i++) {
+                if ((game[i].awayId == "25" || game[i].homeId == "25") && (new Date(game[i].matchTime*1000) > new Date())) {
+                    console.log(new Date(game[i].matchTime*1000));
+                }
+            }
+        
+        });
+
+        </script>
+
+    </body>
+
+</html>
