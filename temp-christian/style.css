@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+}
+
+header {
+    margin-bottom: 100px;
+    padding: 25px   ;
+    background-color: steelblue;
+    color: white;
+}
+
+h3 {
+    font-size: 15pt;
+}
+
+input {
+    border: 2px solid steelblue;
+    padding: 5px;
+    text-align: center;
+    font-size: 11pt;
+}
+
+/* .btn-primary:hover, .btn-primary:active, .btn-primary:visited  */
+.btn-primary { 
+    margin-top: 10px;
+    background-color: steelblue !important;
+}
+
+#enter-city {
+    margin-bottom: 100px;
+}
+
+p {
+    font-size: 11pt;
+    color: lightgray;
+}

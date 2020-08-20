@@ -2,57 +2,35 @@
 
 <html lang="en-us">
     <head>
-        <meta charset="utf-8">
-        <title>temp</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="./style.css" />
+        <title>Your Local Sports Page</title>
     </head>
 
     <body>
+        <header>
+            <h1>Your Local Sports Page</h1>
+        </header>
+
+        <main>
+            <div id="enter-city" class="container">
+                <h3>Enter city name ...</h3>
+                <input type="text" placeholder="e.g. Portland"><br>
+                <button type="button" id="city-query" class="btn btn-primary">Submit</button>
+            </div>
+            <div id="site-info">
+                <p>some information about this web app<br>and what it can do …</p>
+            </div>
+        </main>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript" src="./script.js"></script>
 
-        // Danny's api key: DaMMhwibfDPKxlHn
-        // Christian's api key: 0uzEF34YYjTbHstM
-
-        var cityName = prompt("Enter city");
-        var cityQueryURL = "https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/team/search?api_key=0uzEF34YYjTbHstM&name=" + cityName;
-        var teamName;
-
-        var gamesQueryURL = "https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/schedule?api_key=0uzEF34YYjTbHstM&leagueId=111";
-        
-        // call to get teams
-        $.ajax({
-        url: cityQueryURL,
-        method: "GET"
-        }).then(function(response) {
-
-            for (var i = 0; i < response.data.length; i++) {
-                if (response.data[i].leagueId === "111") {
-                    console.log("Upcoming " + response.data[i].name + " games:");
-                    teamName = response.data[i].name
-                }
-            }
-
-        });
-
-        // call to get upcoming schedule
-        $.ajax({
-        url: gamesQueryURL,
-        method: "GET"
-        }).then(function(response) {
-
-            var game = response.data;
-
-            for (var i = 0; i < game.length; i++) {
-                if ((game[i].awayName == teamName || game[i].homeName == teamName) && (new Date(game[i].matchTime*1000) > new Date())) {
-                    console.log(new Date(game[i].matchTime*1000));
-                }
-            }
-
-        });
-
-        </script>
-
+        <!-- 8-6-20 Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 
 </html>
