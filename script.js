@@ -1,5 +1,6 @@
         // Danny's iSports API key: DaMMhwibfDPKxlHn
         // Christian's iSports API key: 0uzEF34YYjTbHstM
+        // Michael's iSports API key: OpV33oLoEsvyd08B
 
         var cityName = prompt("Enter city");
 
