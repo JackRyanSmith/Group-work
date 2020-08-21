@@ -1,6 +1,8 @@
         // Danny's iSports API key: DaMMhwibfDPKxlHn
         // Christian's iSports API key: 0uzEF34YYjTbHstM
-
+        // JackRyan's Isport API key: wFO2Vj7ud4ZRBpCa
+        // Michael's iSports API key: OpV33oLoEsvyd08B
+        
         var cityName = prompt("Enter city");
 
         // Building the URL we need to query the iSports database
