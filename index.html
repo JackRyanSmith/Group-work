@@ -14,53 +14,36 @@
         </header>
 
         <main>
-            <div id="enter-city" class="container">
-                <h3>Enter city name ...</h3>
-                <input type="text" placeholder="e.g. Portland"><br>
-                <button type="button" id="city-query" class="btn btn-primary">Submit</button>
-            </div>
-            <div id="site-info">
-                <p>some information about this web app<br>and what it can do …</p>
-            </div>
-            <div id="team-select" class="container">
-                <p>
-                    <label>
-                      <input type="checkbox" class="filled-in" checked="checked" />
-                      <span>Team 1</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" class="filled-in" checked="checked" />
-                      <span>Team 2</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" class="filled-in" checked="checked" />
-                      <span>Team 3</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input type="checkbox" class="filled-in" checked="checked" />
-                      <span>Team 4</span>
-                    </label>
-                  </p>
-                <p>some filler text until we get something better </p>
-            </div>
-        
+
+            <form id="city-search-form">
+                <label for="search-city">Search a city...</label>
+                <div class="input-group">
+                    <input type="text" id="search-city" class="form-control">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </form>
+
         </main>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="./script.js"></script>
 
-        <!-- 8-6-20 Materialize JS -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> -->
+
+        <!-- 8-6-20 Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+
     </body>
 
 </html>
