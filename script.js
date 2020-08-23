@@ -1,21 +1,18 @@
-
-
 // Danny's iSports API key: DaMMhwibfDPKxlHn
 // Christian's iSports API key: 0uzEF34YYjTbHstM
 // JackRyan's isport API key: wFO2Vj7ud4ZRBpCa
 // Michael's iSports API key: OpV33oLoEsvyd08B
-
 const searchForm = $("#city-search-form");
 const searchInput = $("#search-city");
-
+const teamInput = $("#team-selection");
+const options = $("#info-options");
 searchForm.on("submit", function (event) {
     event.preventDefault();
     const cityName = $("#search-city").val();
     if (!cityName) return;
-
+    searchForm.addClass("hide");
     displaySports(cityName);
 });
-
 // Building the URL we need to query the iSports database
 async function displaySports(city) {
     try {
@@ -25,11 +22,94 @@ async function displaySports(city) {
         ]);
         const [teams, games] = await Promise.all(responses.map(response => response.json()));
         console.log(teams, games);
-// error checks
+        displayTeams(teams);
+        {
+            const teamItem = $("<div>").appendTo(teamInput);
+            const teamBody = $("<div>").addClass("#team-card-body").appendTo(teamItem);
+            const submitBtn = $("<button>Submit</button>").addClass("#team-submit-btn").appendTo(teamItem);
+            for (var i = 0; i < teams.data.length; i++) {
+                const teamTitle = $("<p>").text(`${teams.data[i].name}`);
+                teamBody.append(teamTitle);
+            }
+            submitBtn.on("click", function (event) {
+                teamItem.addClass("hide");
+                const optionsList = $("<ul>").appendTo(options);
+                const optionOne = $("<li>").text("Next game");
+                const optionTwo = $("<li>").text("Team schedule");
+                const optionThree = $("<li>").text("Team standings");
+                const optionFour = $("<button>Submit</button>");
+                // const nextGame = $("<div>").text(`Next game is at: ${games.data[603].matchTime}`);
+                optionsList.append(optionOne, optionTwo, optionThree, optionFour);
+
+            })
+        }
+        // error checks
     } catch (error) {
-    console.error(error);
+        console.error(error);
+    }
 }
+function displayTeams(city) {
 }
+
+// function renderTeamList() {
+//     // Clear todoList element and update todoCountSpan
+//     teamList.innerHTML = "";
+//     teamCountSpan.textContent = teams.length;
+
+//       // Render a new li for each todo
+//   for (var i = 0; i < teams.length; i++) {
+//             var team = teams[i];
+
+//             var li = document.createElement("li");
+//             li.textContent = team;
+//             li.setAttribute("data-index", i);
+
+//             var button = document.createElement("button");
+//             button.textContent = "Complete";
+
+//             li.appendChild(button);
+//             todoList.appendChild(li);
+//         }
+// }
+
+// function init() {
+//   // Get stored todos from localStorage
+//   // Parsing the JSON string to an object
+//   var storedTeams = JSON.parse(localStorage.getItem("teams"));
+
+//   // If todos were retrieved from localStorage, update the todos array to it
+//   if (storedTeams !== null) {
+//     teams = storedTeams;
+//   }
+
+//   // Render todos to the DOM
+//   renderTodos();
+// }
+
+// function storeTodos() {
+//   // Stringify and set "todos" key in localStorage to todos array
+//   localStorage.setItem("teams", JSON.stringify(teams));
+// }
+
+// // When form is submitted...
+// todoForm.addEventListener("submit", function(event) {
+//   event.preventDefault();
+
+//   var teamText = teamInput.value.trim();
+
+//   // Return from function early if submitted todoText is blank
+//   if (teamText === "") {
+//     return;
+//   }
+
+//   // Add new todoText to todos array, clear the input
+//   teams.push(todoText);
+//   teamInput.value = "";
+
+//   // Store updated todos in localStorage, re-render the list
+//   storeTeams();
+//   renderTeams();
+// });
 
 // Run our AJAX call to get teams
 // $.ajax({
