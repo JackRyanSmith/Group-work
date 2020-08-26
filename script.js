@@ -46,10 +46,11 @@ async function displaySports(city) {
             const teamBody = $("<div>").addClass("#team-card-body").appendTo(teamItem);
             const teamForm = $("<form>").attr("id", "formId").appendTo(teamBody);
             for (var i = 0; i < teams.data.length; i++) {
-                const teamFormItem = $("<input>").attr("class", "choseTeam").attr("type", "checkbox").attr("name", "team" + [i]).attr("value", `${teams.data[i].name}`);
-                const teamFormLabel = $("<label>").attr("for", "team" + [i]).text(`${teams.data[i].name}`);
-                const breakLine = $("<br>");
-                teamForm.append(teamFormItem, teamFormLabel, breakLine);
+                const divTemp = $("<div>");
+                const teamFormItem = $("<input>").attr("class", "choseTeam").attr("type", "checkbox").attr("id", "team" + [i]).attr("name", "team" + [i]).attr("value", `${teams.data[i].name}`).appendTo(divTemp);
+                const teamFormLabel = $("<label>").attr("for", "team" + [i]).text(`${teams.data[i].name}`).appendTo(divTemp);
+                const breakLine = $("<br>").appendTo(divTemp);
+                teamForm.append(divTemp);
             }
 
             const submitBtn = $("<button>Submit</button>").addClass("#team-submit-btn").appendTo(teamForm);
@@ -106,3 +107,4 @@ async function displaySports(city) {
 }
 function displayTeams(city) {
 }
+
