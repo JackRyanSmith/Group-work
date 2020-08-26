@@ -26,19 +26,26 @@ async function displaySports(city) {
         {
             const teamItem = $("<div>").appendTo(teamInput);
             const teamBody = $("<div>").addClass("#team-card-body").appendTo(teamItem);
-            const submitBtn = $("<button>Submit</button>").addClass("#team-submit-btn").appendTo(teamItem);
+            const teamForm = $("<form>").attr("id", "formId").appendTo(teamBody);
+            const submitBtn = $("<button>Submit</button>").addClass("#team-submit-btn").appendTo(teamForm);
             for (var i = 0; i < teams.data.length; i++) {
-                const teamTitle = $("<p>").text(`${teams.data[i].name}`);
-                teamBody.append(teamTitle);
+                const teamFormItem = $("<input>").attr("type", "checkbox").attr("name", "team" + [i]).attr("value", `${teams.data[i].name}`);
+                const teamFormLabel = $("<label>").attr("for", "team" + [i]).text(`${teams.data[i].name}`);
+                const breakLine = $("<br>");
+                teamForm.append(teamFormItem, teamFormLabel, breakLine);
             }
+            // $("#formId").on("click", function() {
+            //     console.log($(`input[type=checkbox][name=${teams.data[i]}]:checked`).val());
+            // });
             submitBtn.on("click", function (event) {
+                event.preventDefault();
+                console.log(event.parent());
                 teamItem.addClass("hide");
                 const optionsList = $("<ul>").appendTo(options);
                 const optionOne = $("<li>").text("Next game");
                 const optionTwo = $("<li>").text("Team schedule");
                 const optionThree = $("<li>").text("Team standings");
                 const optionFour = $("<button>Submit</button>");
-                // const nextGame = $("<div>").text(`Next game is at: ${games.data[603].matchTime}`);
                 optionsList.append(optionOne, optionTwo, optionThree, optionFour);
 
             })
