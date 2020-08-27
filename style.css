@@ -25,6 +25,16 @@ header {
     display: none;
 }
 
+p {
+    margin-top: 80px;
+    text-align: center !important;
+}
+
+span {
+    font-size: larger;
+    font-weight: bolder;
+}
+
 #formId {
     margin: auto;
     width: fit-content;
@@ -38,8 +48,4 @@ header {
 
 #team-result {
     font-size: 25pt;
-}
-
-#option-result {
-
 }
