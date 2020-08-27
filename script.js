@@ -13,6 +13,7 @@ searchForm.on("submit", function (event) {
     const cityName = $("#search-city").val();
     if (!cityName) return;
     searchForm.addClass("hide");
+    $("#header").text(cityName);
     displaySports(cityName);
 });
 // Building the URL we need to query the iSports database
@@ -123,9 +124,9 @@ async function displaySports(city) {
                 optionsForm.addClass("hide");
 
                 for (var i = 0; i < teamArray.length; i++) {
-                    const teamData = $("<div>").text(teamArray[i]).appendTo(finalResults);
+                    const teamData = $("<div>").attr("id", "team-result").text(teamArray[i]).appendTo(finalResults);
                     for (var j = 0; j < optionArray.length; j++) {
-                        const optionsData = $("<div>").text(optionArray[j]).appendTo(teamData)
+                        const optionsData = $("<div>").attr("id", "option-result").text(optionArray[j]).appendTo(finalResults);
                     }
                     teamData.append($("<br>"));
                 };
