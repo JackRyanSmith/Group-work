@@ -1,7 +1,8 @@
 // Danny's iSports API key: DaMMhwibfDPKxlHn
-// Christian's iSports API key: 0uzEF34YYjTbHstM
+// Christian's iSports API key: 0uzEF34YYjTbHstM; Pexels API key: 563492ad6f91700001000001fc2a789fa0864115a147ac0879147312
 // JackRyan's isport API key: wFO2Vj7ud4ZRBpCa
 // Michael's iSports API key: OpV33oLoEsvyd08B
+
 const searchForm = $("#city-search-form");
 const searchInput = $("#search-city");
 const teamInput = $("#team-selection");
@@ -14,8 +15,33 @@ searchForm.on("submit", function (event) {
     if (!cityName) return;
     searchForm.addClass("hide");
     $("#header").text(cityName);
+
+
+    // Pexels - photo search
+    var apiKey = "563492ad6f91700001000001fc2a789fa0864115a147ac0879147312"
+
+    $.ajax({
+        method: "GET",
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader ("Authorization", apiKey);
+        },
+        url: "https://api.pexels.com/v1/search?query=" + cityName,
+    }).then(function(data) {
+        var cityImage = (data.photos[0].src.original);
+        console.log(cityImage);
+
+        $("#header").css({
+            "background-image" : "url(" + cityImage + ")",
+            "background-position" : "center"
+        });
+    });
+
+
     displaySports(cityName);
+
 });
+
+
 // Building the URL we need to query the iSports database
 async function displaySports(city) {
     try {
