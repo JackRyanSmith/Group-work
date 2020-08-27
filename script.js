@@ -89,17 +89,17 @@ async function displaySports(city) {
             const optionsForm = $("<form>").attr("id", "formId").appendTo(optionBody);
 
             const divTemp1 = $("<div>");
-            const optionItemOne = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("name", "option-1").attr("value", "Next Game").appendTo(divTemp1);
+            const optionItemOne = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("id", "option-1").attr("name", "option-1").attr("value", "Next Game").appendTo(divTemp1);
             const optionOneLabel = $("<label>").attr("for", "option-1").text("Next Game").appendTo(divTemp1);
             const breakLine1 = $("<br>").appendTo(divTemp1);
 
             const divTemp2 = $("<div>");
-            const optionItemTwo = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("name", "option-2").attr("value", "Team Schedule").appendTo(divTemp2);
+            const optionItemTwo = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("id", "option-2").attr("name", "option-2").attr("value", "Team Schedule").appendTo(divTemp2);
             const optionTwoLabel = $("<label>").attr("for", "option-2").text("Team Schedule").appendTo(divTemp2);
             const breakLine2 = $("<br>").appendTo(divTemp2);
 
             const divTemp3 = $("<div>");
-            const optionItemThree = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("name", "option-3").attr("value", "Team Standings").appendTo(divTemp3);
+            const optionItemThree = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("id", "option-3").attr("name", "option-3").attr("value", "Team Standings").appendTo(divTemp3);
             const optionThreeLabel = $("<label>").attr("for", "option-3").text("Team Standings").appendTo(divTemp3);
             const breakLine3 = $("<br>").appendTo(divTemp3);
 
