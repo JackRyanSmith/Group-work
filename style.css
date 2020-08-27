@@ -4,9 +4,9 @@ body {
 
 header {
     margin-bottom: 100px;
-    padding: 25px   ;
+    padding: 25px;
     background-color: steelblue;
-    font-size: 25pt;
+    font-size: 25pt; /* has no effect on materialize styling?? */
     color: white;
 }
 
@@ -14,28 +14,24 @@ header {
     font-size: 20pt;
 }
 
-input {
-    border: 2px solid steelblue;
-    padding: 10px;
+#search-city {
+    width: 250px;
+    border: 3px solid steelblue;
     text-align: center;
     font-size: 12pt;
 }
 
-/* .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited  */
-.btn-secondary { 
-    margin-top: 10px;
-    background-color: steelblue !important;
-}
-
-#enter-city {
-    margin-bottom: 100px;
-}
-
-p {
-    font-size: 11pt;
-    color: lightgray;
-}
-
 .hide {
     display: none;
+}
+
+#formId {
+    margin: auto;
+    width: fit-content;
+    text-align: left;
+    font-size: 12pt !important; /* has no effect on materialize styling?? */
+}
+
+#submit-btn {
+    margin: 20%;
 }
