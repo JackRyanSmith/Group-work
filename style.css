@@ -6,22 +6,23 @@ header {
     margin-bottom: 100px;
     padding: 25px   ;
     background-color: steelblue;
+    font-size: 25pt;
     color: white;
 }
 
-h3 {
-    font-size: 15pt;
+#title-text {
+    font-size: 20pt;
 }
 
 input {
     border: 2px solid steelblue;
-    padding: 5px;
+    padding: 10px;
     text-align: center;
-    font-size: 11pt;
+    font-size: 12pt;
 }
 
-/* .btn-primary:hover, .btn-primary:active, .btn-primary:visited  */
-.btn-primary { 
+/* .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited  */
+.btn-secondary { 
     margin-top: 10px;
     background-color: steelblue !important;
 }
