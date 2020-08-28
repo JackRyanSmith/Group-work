@@ -24,7 +24,8 @@ searchForm.on("submit", function (event) {
         },
         url: "https://api.pexels.com/v1/search?query=" + cityName,
     }).then(function (data) {
-        var cityImage = (data.photos[0].src.original);
+        var random = Math.floor(Math.random()*10);
+        var cityImage = (data.photos[random].src.original);
         console.log(cityImage);
         $("#header").css({
             "background-image": "url(" + cityImage + ")",
@@ -142,7 +143,7 @@ function displayData(nextGame, teamSchedule, teamStanding) {
     teams.forEach(function(team) {
         console.log(team);
         console.log(team.name);
-        const teamData = $("<div>").text(team.name).appendTo(finalResults);
+        const teamData = $("<div>").text(team.name).attr("id", "team-result").appendTo(finalResults);
         if (nextGame) {
             const firstMatch = matches.filter(function(match) {
                 console.log(match.homeName);
@@ -154,6 +155,7 @@ function displayData(nextGame, teamSchedule, teamStanding) {
             const teamMatches = matches.filter(function(match) {
                 return (match.homeName === team.name || match.awayName === team.name);
             });
+            console.log(teamMatches);
             const optionsData = $("<div>").text(teamMatches).appendTo(teamData)
         }
         if (teamStanding) {
