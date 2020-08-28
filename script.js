@@ -157,7 +157,7 @@ function displayData(nextGame, teamSchedule, teamStanding) {
             });
             console.log(teamMatches);
             for (var i = 0; i < teamMatches.length; i++) {
-                const optionsData = $("<div>").attr("id", "match-results").text(`${new Date(teamMatches[i].matchTime*1000)} ${teamMatches[i].awayName}: ${teamMatches[i].awayScore} ${teamMatches[i].homeName}: ${teamMatches[i].homeScore}`).appendTo(teamData);
+                const optionsData = $("<div>").attr("id", "match-results").text(`${new Date(teamMatches[i].matchTime * 1000).toLocaleDateString('en-US')} ${teamMatches[i].awayName}: ${teamMatches[i].awayScore} ${teamMatches[i].homeName}: ${teamMatches[i].homeScore}`).appendTo(teamData);
             }
         }
         if (teamStanding) {
