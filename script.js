@@ -162,5 +162,3 @@ function displayData(nextGame, teamSchedule, teamStanding) {
         teamData.append($("<br>"));
     });
 }
-
-// filter, find, map
