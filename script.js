@@ -8,7 +8,9 @@ const searchInput = $("#search-city");
 const teamInput = $("#team-selection");
 const options = $("#info-options");
 const finalResults = $("#results");
+const headerText = $("#header-id");
 
+// starting page search box and next page listener
 searchForm.on("submit", function (event) {
     event.preventDefault();
     const cityName = $("#search-city").val();
@@ -69,11 +71,18 @@ async function displaySports(city) {
         }
         // end of grab next game data
 
-        
+        // replacing header text with user picked city
+        const removeHeader = document.getElementById("replace-header");
+        removeHeader.remove();
+        const headerCity = $("<h1>").text(`${$("#search-city").val()}`);
+        headerText.append(headerCity);
+
+        // appending local team data
         const teamItem = $("<div>").appendTo(teamInput); // teamInput < teamItem < teamBody < teamForm < divTemp < teamFormItem + teamFormLabel + breakLine
         const teamBody = $("<div>").addClass("#team-card-body").appendTo(teamItem);
         const teamForm = $("<form>").attr("id", "formId").appendTo(teamBody);
 
+        // loop that gives labels/checkboxes to teams no matter how long the list is
         for (var i = 0; i < teams.data.length; i++) {
             const divTemp = $("<div>");
             const teamFormItem = $("<input>").attr("class", "choseTeam").attr("type", "checkbox").attr("id", "team" + [i]).attr("name", "team" + [i]).attr("value", `${teams.data[i].name}`).appendTo(divTemp);
@@ -81,10 +90,9 @@ async function displaySports(city) {
             const breakLine = $("<br>").appendTo(divTemp);
             teamForm.append(divTemp);
         }
-
-
         const submitBtn = $("<button>Submit</button>").attr("id", "submit-btn").addClass("btn waves-effect waves-light").attr("type", "submit").attr("name", "action").appendTo(teamForm);
 
+        // click listener that leads to next page with info list
         submitBtn.on("click", function (event) {
             event.preventDefault();
             var teamArray = [];
@@ -99,18 +107,6 @@ async function displaySports(city) {
             localStorage.setItem("teamArray", teamArray);
             teamItem.addClass("hide");
 
-            // // OLD form code
-            // const breakLine = $("<br>");
-            // const optionsForm = $("<form>").attr("id", "formId").appendTo(options); // options < optionsForm < optionItemOne + optionOneLabel + optionItemTwo ...
-            // const optionItemOne = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("name", "option-1").attr("value", "Next Game");
-            // const optionOneLabel = $("<label>").attr("for", "option-1").text("Next Game");
-            // const optionItemTwo = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("name", "option-2").attr("value", "Team Schedule");
-            // const optionTwoLabel = $("<label>").attr("for", "option-2").text("Team Schedule");
-            // const optionItemThree = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("name", "option-3").attr("value", "Team Standings");
-            // const optionThreeLabel = $("<label>").attr("for", "option-3").text("Team Standings");
-            // optionsForm.append(optionItemOne, optionOneLabel, optionItemTwo, optionTwoLabel, optionItemThree, optionThreeLabel);
-
-            // NEW form code
             const optionItem = $("<div>").appendTo(options); // options < optionItem < optionBody < optionsForm < divTemp <
             const optionBody = $("<div>").addClass("#option-card-body").appendTo(optionItem);
             const optionsForm = $("<form>").attr("id", "formId").appendTo(optionBody);
