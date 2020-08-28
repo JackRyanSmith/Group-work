@@ -156,10 +156,12 @@ function displayData(nextGame, teamSchedule, teamStanding) {
                 return (match.homeName === team.name || match.awayName === team.name);
             });
             console.log(teamMatches);
-            const optionsData = $("<div>").text(teamMatches).appendTo(teamData)
+            for (var i = 0; i < teamMatches.length; i++) {
+                const optionsData = $("<div>").attr("id", "match-results").text(`${new Date(teamMatches[i].matchTime*1000)} ${teamMatches[i].awayName}: ${teamMatches[i].awayScore} ${teamMatches[i].homeName}: ${teamMatches[i].homeScore}`).appendTo(teamData);
+            }
         }
         if (teamStanding) {
-            // another api
+            // another api?
             const optionsData = $("<div>").text("Team Standing").appendTo(teamData)
         }
         teamData.append($("<br>"));
