@@ -2,6 +2,7 @@
 // Christian's iSports API key: 0uzEF34YYjTbHstM; Pexels API key: 563492ad6f91700001000001fc2a789fa0864115a147ac0879147312
 // JackRyan's isport API key: wFO2Vj7ud4ZRBpCa
 // Michael's iSports API key: OpV33oLoEsvyd08B
+
 const searchForm = $("#city-search-form");
 const searchInput = $("#search-city");
 const teamInput = $("#team-selection");
