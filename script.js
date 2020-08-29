@@ -1,15 +1,17 @@
-// Danny's iSports API key:
+// Danny's iSports API key: EXPIRED
 const apiKey1 = "DaMMhwibfDPKxlHn";
-// Christian's iSports API key: 
-const apiKey2 = "0uzEF34YYjTbHstM"; 
-// JackRyan's isport API key: 
-const apiKey3 = "wFO2Vj7ud4ZRBpCa";
-// Michael's iSports API key: 
-const apiKey4 = "OpV33oLoEsvyd08B";
+// Danny's second iSports API key:
+const apiKey2 = "emVNjF05cHjztBVt"
+// Christian's iSports API key: EXPIRED
+const apiKey3 = "0uzEF34YYjTbHstM"; 
+// JackRyan's isport API key: EXPIRED
+const apiKey4 = "wFO2Vj7ud4ZRBpCa";
+// Michael's iSports API key: EXPIRED
+const apiKey5 = "OpV33oLoEsvyd08B";
 // Michael's second iSports API key: 
-const apiKey5 = "hXIoG3unSr5PFboi";
+const apiKey6 = "hXIoG3unSr5PFboi";
 // Michael's third iSports API key: 
-const apiKey6 = "OhHGQTk2RHGzu5Tp";
+const apiKey7 = "OhHGQTk2RHGzu5Tp";
 // Chirstian's Pexels API key: 
 const apiKeyPexels = "563492ad6f91700001000001fc2a789fa0864115a147ac0879147312";
 
@@ -49,8 +51,8 @@ searchForm.on("submit", function (event) {
 async function searchForTeamData(city) {
     try {
         const responses = await Promise.all([
-            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/team/search?api_key=${apiKey4}&name=${city}`),
-            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/schedule?api_key=${apiKey4}&leagueId=111`)
+            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/team/search?api_key=${apiKey5}&name=${city}`),
+            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/schedule?api_key=${apiKey5}&leagueId=111`)
         ]);
 
         const [teamSearchResults, schedule] = await Promise.all(responses.map(response => response.json()));
@@ -68,7 +70,7 @@ async function searchForTeamData(city) {
             // Filter object properties
             return { ...matchData };
         });
-        console.log(teams, matches);
+        //console.log(teams, matches);
         for (var i = 0; i < matches.length; i++) {
             if (matches[i].homeId == 6){
                 console.log(matches[i].matchTime);
@@ -155,13 +157,13 @@ function displayDataSelection() {
 function displayData(nextGame, teamSchedule, teamStanding) {
     console.log(nextGame, teamSchedule, teamStanding);
     teams.forEach(function(team) {
-        console.log(team);
-        console.log(team.name);
+        //console.log(team);
+        //console.log(team.name);
         const teamData = $("<div>").text(team.name).attr("id", "team-result").appendTo(finalResults);
         if (nextGame) {
-            const firstMatch = matches.filter(function(match) {
+            const firstMatch = matches.find(function(match) {
                 console.log(match.homeName);
-                return ((match.homeName === team.name || match.awayName === team.name) && (match.matchTime > Date.now()));
+                return ((match.homeName === team.name || match.awayName === team.name) && (new Date(match.matchTime * 1000) > new Date()));
             });
             const optionsData = $("<div>").attr("id", "next-match-result").text(firstMatch && new Date(firstMatch.matchTime*1000) || "none").appendTo(teamData)
         }
