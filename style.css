@@ -45,6 +45,9 @@ span {
     width: fit-content;
     text-align: left;
 }
+.spacer {
+    height: 20px;
+}
 #submit-btn {
     margin: 20%;
 }
