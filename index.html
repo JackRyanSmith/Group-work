@@ -21,7 +21,7 @@
 
         <main>
             <form id="city-search-form">
-                <label id="title-text" for="search-city">Search a city:</label>
+                <label id="search-title" for="search-city">Search a city:</label>
                 <div class="input-group">
                     <input type="text" id="search-city" class="form-control">
                     <div class="input-group-append">
@@ -44,6 +44,26 @@
             <div id="team-selection"></div>
             <div id="info-options"></div>
             <div id="results"></div>
+            <div id="schedule-results" class="hide">
+
+                <div class="row">
+                    <div class="col s4"></div>
+                    <div class="col s4">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span id="team-card-title" class="card-title"></span>
+                                <div id="schedule-results-list"></div>
+                            </div>
+                            <div class="card-action">
+                                <a href="#">Next Game</a>
+                                <a href="#">Team Standings</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s4"></div>
+                </div>
+
+            </div>
         </main>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

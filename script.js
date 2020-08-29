@@ -40,8 +40,8 @@ searchForm.on("submit", function (event) {
 async function searchForTeamData(city) {
     try {
         const responses = await Promise.all([
-            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/team/search?api_key=DaMMhwibfDPKxlHn&name=${city}`),
-            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/schedule?api_key=DaMMhwibfDPKxlHn&leagueId=111`)
+            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/team/search?api_key=OpV33oLoEsvyd08B&name=${city}`),
+            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/schedule?api_key=OpV33oLoEsvyd08B&leagueId=111`)
         ]);
 
         const [teamSearchResults, schedule] = await Promise.all(responses.map(response => response.json()));
@@ -76,7 +76,7 @@ function displayTeamSelection() {
     // appending local team data
     const teamItem = $("<div>").appendTo(teamInput); // teamInput < teamItem < teamBody < teamForm < divTemp < teamFormItem + teamFormLabel + breakLine
     const teamBody = $("<div>").addClass("#team-card-body").appendTo(teamItem);
-    const teamForm = $("<form>").attr("id", "formId").appendTo(teamBody);
+    const teamForm = $("<form>").attr("id", "formId").addClass("title-text").text("Local Teams").appendTo(teamBody);
 
     // loop that gives labels/checkboxes to teams no matter how long the list is
     for (var i = 0; i < teams.length; i++) {
@@ -109,7 +109,7 @@ function displayTeamSelection() {
 function displayDataSelection() {
     const optionItem = $("<div>").appendTo(options); // options < optionItem < optionBody < optionsForm < divTemp <
     const optionBody = $("<div>").addClass("#option-card-body").appendTo(optionItem);
-    const optionsForm = $("<form>").attr("id", "formId").appendTo(optionBody);
+    const optionsForm = $("<form>").attr("id", "formId").addClass("title-text").text("Info Options").appendTo(optionBody);
 
     const divTemp1 = $("<div>");
     const optionItemOne = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("id", "option-1").attr("name", "option-1").appendTo(divTemp1);
@@ -143,21 +143,24 @@ function displayData(nextGame, teamSchedule, teamStanding) {
     teams.forEach(function(team) {
         console.log(team);
         console.log(team.name);
+        const schedResults = $("#schedule-results-list");
+        $("#team-card-title").text(team.name).append($("<hr>"));
         const teamData = $("<div>").text(team.name).attr("id", "team-result").appendTo(finalResults);
         if (nextGame) {
             const firstMatch = matches.filter(function(match) {
                 console.log(match.homeName);
-                return ((match.homeName === team.name || match.awayName === team.name) && match.matchTime > Date.now());
+                return ((match.homeName === team.name || match.awayName === team.name) && (match.matchTime > Date.now()));
             });
-            const optionsData = $("<div>").text(firstMatch && new Date(firstMatch.matchTime*1000) || "none").appendTo(teamData)
+            const optionsData = $("<div>").attr("id", "next-match-result").text(firstMatch && new Date(firstMatch.matchTime*1000) || "none").appendTo(teamData)
         }
         if (teamSchedule) {
+            $("#schedule-results").removeClass("hide")
             const teamMatches = matches.filter(function(match) {
                 return (match.homeName === team.name || match.awayName === team.name);
             });
             console.log(teamMatches);
             for (var i = 0; i < teamMatches.length; i++) {
-                const optionsData = $("<div>").attr("id", "match-results").text(`${new Date(teamMatches[i].matchTime * 1000).toLocaleDateString('en-US')} ${teamMatches[i].awayName}: ${teamMatches[i].awayScore} ${teamMatches[i].homeName}: ${teamMatches[i].homeScore}`).appendTo(teamData);
+                const optionsData = $("<div>").attr("id", "match-results").text(`${new Date(teamMatches[i].matchTime * 1000).toLocaleDateString('en-US')} ${teamMatches[i].awayName}: ${teamMatches[i].awayScore} ${teamMatches[i].homeName}: ${teamMatches[i].homeScore}`).appendTo(schedResults);
             }
         }
         if (teamStanding) {

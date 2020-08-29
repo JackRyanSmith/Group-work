@@ -9,17 +9,27 @@ body {
     font-size: 50pt;
     color: white;
 }
-#title-text {
-    font-size: 20pt;
+#search-title {
+    margin-bottom: 25px;
+    font-size: 25pt;
+}
+.title-text {
+    margin-bottom: 25px;
+    color: #546E7A;
+    font-size: 25pt;
+    font-weight: bolder;
 }
 #search-city {
     width: 250px;
-    border: 3px solid #26A79A;
+    border: 3px solid #546E7A;
     text-align: center;
-    font-size: 12pt;
+    font-size: 11pt;
 }
 .hide {
     display: none;
+}
+.btn {
+    background-color: #546E7A !important;
 }
 p {
     margin-top: 80px;
@@ -28,21 +38,27 @@ p {
 span {
     color: #EE6E74;
     font-size: larger;
-    font-weight: bolder;
+    /* font-weight: bolder; */
 }
 #formId {
     margin: auto;
     width: fit-content;
     text-align: left;
-    font-size: 12pt !important; /* has no effect on materialize styling?? */
 }
 #submit-btn {
     margin: 20%;
 }
-#team-result {
+#team-result, #team-card-title {
     font-size: 25pt;
 }
-
+#next-match-result {
+    font-size: 11pt;
+}
+#schedule-results-list {
+    overflow-y: scroll;
+    height: 150px;
+    padding: 1rem
+}
 #match-results {
-    font-size: 15pt;
+    font-size: 11pt;
 }
