@@ -157,8 +157,6 @@ function displayData(nextGame, teamSchedule, teamStanding) {
     teams.forEach(function(team) {
         console.log(team);
         console.log(team.name);
-        const schedResults = $("#schedule-results-list");
-        $("#team-card-title").text(team.name).append($("<hr>"));
         const teamData = $("<div>").text(team.name).attr("id", "team-result").appendTo(finalResults);
         if (nextGame) {
             const firstMatch = matches.filter(function(match) {
@@ -168,7 +166,9 @@ function displayData(nextGame, teamSchedule, teamStanding) {
             const optionsData = $("<div>").attr("id", "next-match-result").text(firstMatch && new Date(firstMatch.matchTime*1000) || "none").appendTo(teamData)
         }
         if (teamSchedule) {
-            $("#schedule-results").removeClass("hide")
+            $("#schedule-results").removeClass("hide");
+            $("#team-card-title").text(team.name).append($("<hr>"));
+            const schedResults = $("#schedule-results-list");
             const teamMatches = matches.filter(function(match) {
                 return (match.homeName === team.name || match.awayName === team.name);
             });
