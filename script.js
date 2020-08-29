@@ -89,6 +89,7 @@ function displayTeamSelection() {
     const teamItem = $("<div>").appendTo(teamInput); // teamInput < teamItem < teamBody < teamForm < divTemp < teamFormItem + teamFormLabel + breakLine
     const teamBody = $("<div>").addClass("#team-card-body").appendTo(teamItem);
     const teamForm = $("<form>").attr("id", "formId").addClass("title-text").text("Local Teams").appendTo(teamBody);
+    const spacer = $("<div>").addClass("spacer").appendTo(teamForm);
 
     // loop that gives labels/checkboxes to teams no matter how long the list is
     for (var i = 0; i < teams.length; i++) {
@@ -122,7 +123,8 @@ function displayDataSelection() {
     const optionItem = $("<div>").appendTo(options); // options < optionItem < optionBody < optionsForm < divTemp <
     const optionBody = $("<div>").addClass("#option-card-body").appendTo(optionItem);
     const optionsForm = $("<form>").attr("id", "formId").addClass("title-text").text("Info Options").appendTo(optionBody);
-
+    const spacer = $("<div>").addClass("spacer").appendTo(optionsForm);
+    
     const divTemp1 = $("<div>");
     const optionItemOne = $("<input>").attr("class", "choose-option").attr("type", "checkbox").attr("id", "option-1").attr("name", "option-1").appendTo(divTemp1);
     const optionOneLabel = $("<label>").attr("for", "option-1").text("Next Game").appendTo(divTemp1);
