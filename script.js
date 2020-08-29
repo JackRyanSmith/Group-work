@@ -169,7 +169,7 @@ function displayData(nextGame, teamSchedule, teamStanding) {
         }
         if (teamSchedule) {
             $("#schedule-results").removeClass("hide");
-            $("#team-card-title").text(team.name).append($("<hr>"));
+            $("#team-card-title").text("Team Schedule").append($("<hr>"));
             const schedResults = $("#schedule-results-list");
             const teamMatches = matches.filter(function(match) {
                 return (match.homeName === team.name || match.awayName === team.name);
