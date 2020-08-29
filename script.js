@@ -1,7 +1,17 @@
-// Danny's iSports API key: DaMMhwibfDPKxlHn
-// Christian's iSports API key: 0uzEF34YYjTbHstM; Pexels API key: 563492ad6f91700001000001fc2a789fa0864115a147ac0879147312
-// JackRyan's isport API key: wFO2Vj7ud4ZRBpCa
-// Michael's iSports API key: OpV33oLoEsvyd08B
+// Danny's iSports API key:
+const apiKey1 = "DaMMhwibfDPKxlHn";
+// Christian's iSports API key: 
+const apiKey2 = "0uzEF34YYjTbHstM"; 
+// JackRyan's isport API key: 
+const apiKey3 = "wFO2Vj7ud4ZRBpCa";
+// Michael's iSports API key: 
+const apiKey4 = "OpV33oLoEsvyd08B";
+// Michael's second iSports API key: 
+const apiKey5 = "hXIoG3unSr5PFboi";
+// Michael's third iSports API key: 
+const apiKey6 = "OhHGQTk2RHGzu5Tp";
+// Chirstian's Pexels API key: 
+const apiKeyPexels = "563492ad6f91700001000001fc2a789fa0864115a147ac0879147312";
 
 const searchForm = $("#city-search-form");
 const searchInput = $("#search-city");
@@ -16,11 +26,10 @@ searchForm.on("submit", function (event) {
     searchForm.addClass("hide");
     $("#header").text(cityName);
     // Pexels - photo search
-    var apiKey = "563492ad6f91700001000001fc2a789fa0864115a147ac0879147312"
     $.ajax({
         method: "GET",
         beforeSend: function (xhr) {
-            xhr.setRequestHeader("Authorization", apiKey);
+            xhr.setRequestHeader("Authorization", apiKeyPexels);
         },
         url: "https://api.pexels.com/v1/search?query=" + cityName,
     }).then(function (data) {
@@ -40,13 +49,16 @@ searchForm.on("submit", function (event) {
 async function searchForTeamData(city) {
     try {
         const responses = await Promise.all([
-            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/team/search?api_key=OpV33oLoEsvyd08B&name=${city}`),
-            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/schedule?api_key=OpV33oLoEsvyd08B&leagueId=111`)
+            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/team/search?api_key=${apiKey4}&name=${city}`),
+            fetch(`https://cors-anywhere.herokuapp.com/http://api.isportsapi.com/sport/basketball/schedule?api_key=${apiKey4}&leagueId=111`)
         ]);
 
         const [teamSearchResults, schedule] = await Promise.all(responses.map(response => response.json()));
         
         searchForm.addClass("hide");
+
+        console.log(teamSearchResults);
+        console.log(schedule);
         
         teams = teamSearchResults.data.map(function(teamData) {
             // Filter object properties
